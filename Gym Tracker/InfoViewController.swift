@@ -51,33 +51,33 @@ class InfoViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         
     }
     
-    func createMap(_ lat : Double, _ long : Double){
-        print("lat: ", lat)
-        print("long: ", long)
-        
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
-        
-        self.googleMapContainer.camera = camera
-        
-        
-        self.googleMapContainer.delegate = self
-        self.googleMapContainer.isMyLocationEnabled = true
-        self.googleMapContainer.settings.myLocationButton = true
-
-    
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = self.googleMapContainer
-
-        
-        
-        
-        
-    }
+//    func createMap(_ lat : Double, _ long : Double){
+//        print("lat: ", lat)
+//        print("long: ", long)
+//        
+//        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
+//        
+//        self.googleMapContainer.camera = camera
+//        
+//        
+//        self.googleMapContainer.delegate = self
+//        self.googleMapContainer.isMyLocationEnabled = true
+//        self.googleMapContainer.settings.myLocationButton = true
+//
+//    
+//        
+//        // Creates a marker in the center of the map.
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//        marker.title = "Sydney"
+//        marker.snippet = "Australia"
+//        marker.map = self.googleMapContainer
+//
+//        
+//        
+//        
+//        
+//    }
     
     
     
@@ -147,8 +147,7 @@ class InfoViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        marker.title = "Current location"
         marker.map = self.googleMapContainer
         
         
@@ -178,10 +177,8 @@ class InfoViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        marker.title = place.formattedAddress
         marker.map = self.googleMapContainer
-        
         
         
         self.dismiss(animated: true, completion: nil)
